@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+	p #{info}
+	p Authors
+	ul
+	each author in authors
+		li #{author}
+	p Enter your name below and press Start 
+	input(type="text" id="username" name="username")
+	button(type="button" onclick="beginGame()") Start
+	
+	script.
+		function beginGame() {
+			var name = document.getElementById("username").value;
+			name = name || "MrNoName";
+			location.assign("html5app/index.html?" + name);
+		}
